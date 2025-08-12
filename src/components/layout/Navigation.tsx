@@ -3,6 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Logo from "@/assets/logo.png"
+
+
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
@@ -30,18 +33,15 @@ const Navigation = () => {
             </div>
           </Link> */}
           {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="w-[80px] h-[55px] bg-white rounded-lg flex items-center justify-center">
-                <img
-                  src="/src/assets/logo.png"
-                  alt="ReadyToRun Logo"
-                  className="w-[60px] h-[40px] object-contain"
-                />
-              </div>
-              {/* <div className="text-2xl font-bold">
-              <span className="text-primary">ReadyToRun</span>
-              </div> */}
-            </Link>
+           <Link to="/" className="flex items-center space-x-2">
+            <div className="w-[140px] h-[80px] bg-white rounded-lg flex items-center justify-center">
+              <img
+                src={Logo}
+                alt="ReadyToRun Logo"
+                className="w-[110px] h-[60px] object-contain"
+              />
+            </div>
+          </Link>
 
             {/* <Link to="/" className="flex items-center space-x-2">
               <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">

@@ -122,18 +122,20 @@ const Register = () => {
                   {/* Personal Information */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label htmlFor="fullname">Full Name *</Label>
+                      <Label htmlFor="fullname" className="text-lg font-medium">Full Name *</Label>
                       <Input 
                         id="fullname" 
+                        className="text-lg" 
                         value={formData.fullname}
                         onChange={(e) => setFormData(prev => ({...prev, fullname: e.target.value}))}
                         required 
                       />
                     </div>
                     <div>
-                      <Label htmlFor="dateOfBirth">Date of Birth *</Label>
+                      <Label htmlFor="dateOfBirth" className="text-lg font-medium">Date of Birth *</Label>
                       <Input 
                         id="dateOfBirth" 
+                        className="text-lg" 
                         type="date"
                         value={formData.dateOfBirth}
                         onChange={(e) => setFormData(prev => ({...prev, dateOfBirth: e.target.value}))}
@@ -144,22 +146,22 @@ const Register = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
-                      <Label>Gender *</Label>
+                      <Label className="text-lg font-medium">Gender *</Label>
                       <Select value={formData.gender} onValueChange={(value) => setFormData(prev => ({...prev, gender: value}))}>
-                        <SelectTrigger>
+                        <SelectTrigger className="text-lg">
                           <SelectValue placeholder="Select gender" />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="male">Male</SelectItem>
                           <SelectItem value="female">Female</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                     <div>
-                      <Label htmlFor="email">Email *</Label>
+                      <Label htmlFor="email" className="text-lg font-medium">Email *</Label>
                       <Input 
                         id="email" 
+                        className="text-lg"
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData(prev => ({...prev, email: e.target.value}))}
@@ -167,9 +169,10 @@ const Register = () => {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="phone">Phone Number *</Label>
+                      <Label htmlFor="phone" className="text-lg font-medium">Phone Number *</Label>
                       <Input 
                         id="phone" 
+                        className="text-lg"
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => setFormData(prev => ({...prev, phone: e.target.value}))}
@@ -180,18 +183,20 @@ const Register = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label htmlFor="stateOfOrigin">State of Origin *</Label>
+                      <Label htmlFor="stateOfOrigin" className="text-lg font-medium">State of Origin *</Label>
                       <Input 
                         id="stateOfOrigin"
+                        className="text-lg"
                         value={formData.stateOfOrigin}
                         onChange={(e) => setFormData(prev => ({...prev, stateOfOrigin: e.target.value}))}
                         required 
                       />
                     </div>
                     <div>
-                      <Label htmlFor="stateOfResidence">State of Residence *</Label>
+                      <Label htmlFor="stateOfResidence" className="text-lg font-medium">State of Residence *</Label>
                       <Input 
                         id="stateOfResidence"
+                        className="text-lg"
                         value={formData.stateOfResidence}
                         onChange={(e) => setFormData(prev => ({...prev, stateOfResidence: e.target.value}))}
                         required 
@@ -200,9 +205,10 @@ const Register = () => {
                   </div>
 
                   <div>
-                    <Label>Highest Education Qualification *</Label>
+                    <Label className="text-lg font-medium">Highest Education Qualification *</Label>
                     <Select value={formData.education} onValueChange={(value) => setFormData(prev => ({...prev, education: value}))}>
-                      <SelectTrigger>
+                      <SelectTrigger 
+                        className="text-lg">
                         <SelectValue placeholder="Select education level" />
                       </SelectTrigger>
                       <SelectContent>
@@ -217,9 +223,10 @@ const Register = () => {
 
                   {/* Political Experience */}
                   <div>
-                    <Label htmlFor="previousOffice">Have you previously held any elective or appointed office? (state and year)</Label>
+                    <Label htmlFor="previousOffice" className="text-lg font-medium">Have you previously held any elective or appointed office? (state and year)</Label>
                     <Input 
                       id="previousOffice"
+                      className="text-lg"
                       value={formData.previousOffice}
                       onChange={(e) => setFormData(prev => ({...prev, previousOffice: e.target.value}))}
                       placeholder="e.g., Student Union President (2020)"
@@ -227,9 +234,10 @@ const Register = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="interestedOffice">Which office are you interested in? *</Label>
+                    <Label htmlFor="interestedOffice" className="text-lg font-medium">Which office are you interested in? *</Label>
                     <Input 
                       id="interestedOffice"
+                      className="text-lg"
                       value={formData.interestedOffice}
                       onChange={(e) => setFormData(prev => ({...prev, interestedOffice: e.target.value}))}
                       required 
@@ -237,24 +245,25 @@ const Register = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="previousContest">Have you contested for an elective office before? (state and year)</Label>
+                    <Label htmlFor="previousContest" className="text-lg font-medium">Have you contested for an elective office before? (state and year)</Label>
                     <Input 
                       id="previousContest"
+                      className="text-lg"
                       value={formData.previousContest}
                       onChange={(e) => setFormData(prev => ({...prev, previousContest: e.target.value}))}
                     />
                   </div>
 
                   <div>
-                    <Label>Are you a card-carrying member of a political party?</Label>
+                    <Label className="text-lg font-medium">Are you a card-carrying member of a political party?</Label>
                     <RadioGroup value={formData.partyMember} onValueChange={(value) => setFormData(prev => ({...prev, partyMember: value}))}>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="yes" id="party-yes" />
-                        <Label htmlFor="party-yes">Yes</Label>
+                        <RadioGroupItem value="yes" id="party-yes" className="text-lg"/>
+                        <Label htmlFor="party-yes"className="text-lg font-medium">Yes</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="no" id="party-no" />
-                        <Label htmlFor="party-no">No</Label>
+                        <RadioGroupItem value="no" id="party-no" className="text-lg"/>
+                        <Label htmlFor="party-no"className="text-lg font-medium">No</Label>
                       </div>
                     </RadioGroup>
                   </div>
@@ -262,19 +271,20 @@ const Register = () => {
                   {/* File Uploads */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label htmlFor="partyCard">Upload your political party membership card</Label>
-                      <Input id="partyCard" type="file" accept="image/*,.pdf" />
+                      <Label htmlFor="partyCard" className="text-lg font-medium">Upload your political party membership card</Label>
+                      <Input id="partyCard" className="text-lg" type="file" accept="image/*,.pdf" />
                     </div>
                     <div>
-                      <Label htmlFor="resume">Upload resume/CV *</Label>
-                      <Input id="resume" type="file" accept=".pdf,.doc,.docx" required />
+                      <Label htmlFor="resume" className="text-lg font-medium">Upload resume/CV *</Label>
+                      <Input id="resume" className="text-lg" type="file" accept=".pdf,.doc,.docx" required />
                     </div>
                   </div>
 
                   <div>
-                    <Label htmlFor="motivation">Please provide a brief statement of your motivation for seeking elective office (200 words max) *</Label>
+                    <Label htmlFor="motivation" className="text-lg font-medium">Please provide a brief statement of your motivation for seeking elective office (200 words max) *</Label>
                     <Textarea 
                       id="motivation"
+                      className="text-lg"
                       value={formData.motivation}
                       onChange={(e) => setFormData(prev => ({...prev, motivation: e.target.value}))}
                       maxLength={200}
@@ -285,48 +295,50 @@ const Register = () => {
                   </div>
 
                   <div>
-                    <Label>How would you rate your understanding of the Nigerian political landscape? *</Label>
+                    <Label className="text-lg font-medium">How would you rate your understanding of the Nigerian political landscape? *</Label>
                     <RadioGroup value={formData.politicalUnderstanding} onValueChange={(value) => setFormData(prev => ({...prev, politicalUnderstanding: value}))}>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="beginner" id="understanding-beginner" />
-                        <Label htmlFor="understanding-beginner">Beginner</Label>
+                        <RadioGroupItem value="beginner" id="understanding-beginner" className="text-lg"/>
+                        <Label htmlFor="understanding-beginner" className="text-lg font-medium">Beginner</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="intermediate" id="understanding-intermediate" />
-                        <Label htmlFor="understanding-intermediate">Intermediate</Label>
+                        <RadioGroupItem value="intermediate" id="understanding-intermediate" className="text-lg"/>
+                        <Label htmlFor="understanding-intermediate" className="text-lg font-medium">Intermediate</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="advanced" id="understanding-advanced" />
-                        <Label htmlFor="understanding-advanced">Advanced</Label>
+                        <RadioGroupItem value="advanced" id="understanding-advanced" className="text-lg" />
+                        <Label htmlFor="understanding-advanced" className="text-lg font-medium">Advanced</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="expert" id="understanding-expert" />
-                        <Label htmlFor="understanding-expert">Expert</Label>
+                        <RadioGroupItem value="expert" id="understanding-expert"  className="text-lg"/>
+                        <Label htmlFor="understanding-expert" className="text-lg font-medium">Expert</Label>
                       </div>
                     </RadioGroup>
                   </div>
 
                   {/* Support Needed */}
                   <div>
-                    <Label>What type of assistance do you need to run for office? Please tick as appropriate</Label>
+                    <Label className="text-lg font-medium">What type of assistance do you need to run for office? Please tick as appropriate</Label>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
                       {assistanceOptions.map((option) => (
                         <div key={option} className="flex items-center space-x-2">
                           <Checkbox 
                             id={`assistance-${option}`}
+                            className="text-lg"
                             checked={formData.assistanceNeeded.includes(option)}
                             onCheckedChange={(checked) => handleAssistanceChange(option, !!checked)}
                           />
-                          <Label htmlFor={`assistance-${option}`}>{option}</Label>
+                          <Label htmlFor={`assistance-${option}`} className="text-lg font-medium">{option}</Label>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <Label htmlFor="otherSupport">Are there other support required? Please state here</Label>
+                    <Label htmlFor="otherSupport" className="text-lg font-medium">Are there other support required? Please state here</Label>
                     <Textarea 
                       id="otherSupport"
+                      className="text-lg"
                       value={formData.otherSupport}
                       onChange={(e) => setFormData(prev => ({...prev, otherSupport: e.target.value}))}
                       rows={3}
@@ -335,39 +347,40 @@ const Register = () => {
 
                   {/* Availability */}
                   <div>
-                    <Label>Availability for interviews/meetings during the week</Label>
+                    <Label className="text-lg font-medium">Availability for interviews/meetings during the week</Label>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
                       {availabilityOptions.map((option) => (
                         <div key={option} className="flex items-center space-x-2">
                           <Checkbox 
                             id={`availability-${option}`}
+                            className="text-lg"
                             checked={formData.availability.includes(option)}
                             onCheckedChange={(checked) => handleAvailabilityChange(option, !!checked)}
                           />
-                          <Label htmlFor={`availability-${option}`}>{option}</Label>
+                          <Label htmlFor={`availability-${option}`} className="text-lg font-medium"> {option}</Label>
                         </div>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <Label>Preferred means of communication *</Label>
+                    <Label className="text-lg font-medium">Preferred means of communication *</Label>
                     <RadioGroup value={formData.communication} onValueChange={(value) => setFormData(prev => ({...prev, communication: value}))}>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="email" id="comm-email" />
-                        <Label htmlFor="comm-email">Email</Label>
+                        <Label htmlFor="comm-email" className="text-lg font-medium">Email</Label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="phone" id="comm-phone" />
-                        <Label htmlFor="comm-phone">Phone</Label>
+                        <Label htmlFor="comm-phone" className="text-lg font-medium"> Phone</Label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="zoom" id="comm-zoom" />
-                        <Label htmlFor="comm-zoom">Zoom</Label>
+                        <Label htmlFor="comm-zoom" className="text-lg font-medium">Zoom</Label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="whatsapp" id="comm-whatsapp" />
-                        <Label htmlFor="comm-whatsapp">WhatsApp</Label>
+                        <Label htmlFor="comm-whatsapp" className="text-lg font-medium">WhatsApp</Label>
                       </div>
                     </RadioGroup>
                   </div>
@@ -380,12 +393,12 @@ const Register = () => {
                       onCheckedChange={(checked) => setFormData(prev => ({...prev, consent: !!checked}))}
                       required
                     />
-                    <Label htmlFor="consent" className="text-sm">
+                    <Label htmlFor="consent" className="text-medium">
                       Do you consent to having your information shared with trusted partner organizations that provide support to youth aspirants/candidates? *
                     </Label>
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full">
+                  <Button type="submit" size="lg" className="w-full text-lg font-medium">
                     Submit Registration
                   </Button>
                 </form>
