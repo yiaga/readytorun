@@ -11,17 +11,35 @@ const TVShow = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Video Placeholder */}
-            <Card className="shadow-lg" style={{ backgroundColor: "#073c50", borderColor: "#feca07", borderWidth: "2px" }}>
+            <a
+              href="https://www.youtube.com/watch?v=QwWvoT-3Cho&list=PLl6IvhbhEqwxQTSE2amaV5PEgo7C8NE3n"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+            <Card className="shadow-lg" style={{ backgroundColor: "#073c50", borderColor: "#883434", borderWidth: "2px" }}>
               <CardContent className="p-0">
                 <div className="relative aspect-video flex items-center justify-center" style={{ backgroundColor: "#063242" }}>
-                  <div className="text-center">
+                  
+                  <img
+                    src="https://img.youtube.com/vi/QwWvoT-3Cho/hqdefault.jpg"
+                    alt="ReadyToRun TV Show"
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Optional: Overlay a play button */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
+                    <PlayCircle className="h-16 w-16 text-[#c01d1d]" />
+                  </div>
+                
+                  {/* <div className="text-center">
                     <PlayCircle className="h-16 w-16 mx-auto mb-4" style={{ color: "#feca07" }} />
                     <p className="text-lg font-medium" style={{ color: "#ffffff" }}>ReadyToRun TV Show</p>
                     <p className="text-sm" style={{ color: "#a0c0cb" }}>Watch inspiring stories and training content</p>
-                  </div>
+                  </div> */}
                 </div>
               </CardContent>
             </Card>
+            </a>
 
             {/* Content */}
             <div>
@@ -56,9 +74,19 @@ const TVShow = () => {
                 </div>
               </div>
 
-              <Button size="lg" style={{ backgroundColor: "#feca07", color: "#094c66" }}>
+              <a
+                href="https://www.youtube.com/watch?v=QwWvoT-3Cho&list=PLl6IvhbhEqwxQTSE2amaV5PEgo7C8NE3n"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg" style={{ backgroundColor: "#feca07", color: "#094c66" }}>
+                  Watch Full Playlist
+                </Button>
+              </a>
+
+              {/* <Button size="lg" style={{ backgroundColor: "#feca07", color: "#094c66" }}>
                 Watch Full Playlist
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>

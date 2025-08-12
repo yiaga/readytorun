@@ -31,18 +31,31 @@ const Navigation = () => {
           </Link> */}
           {/* Logo */}
             <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center">
+              <div className="w-[80px] h-[55px] bg-white rounded-lg flex items-center justify-center">
                 <img
-                  src="/assets/images/logo.jpeg"
+                  src="/src/assets/logo.png"
+                  alt="ReadyToRun Logo"
+                  className="w-[60px] h-[40px] object-contain"
+                />
+              </div>
+              {/* <div className="text-2xl font-bold">
+              <span className="text-primary">ReadyToRun</span>
+              </div> */}
+            </Link>
+
+            {/* <Link to="/" className="flex items-center space-x-2">
+              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                <img
+                  src="/src/assets/logo.png"
                   alt="ReadyToRun Logo"
                   className="w-8 h-8 object-contain"
                 />
               </div>
               <div className="text-2xl font-bold">
-              <span className="text-primary">Ready</span>
-              <span className="text-accent">ToRun</span>
-            </div>
-            </Link>
+              <span className="text-primary">ReadyToRun</span> */}
+              {/* <span className="text-accent">ToRun</span> */}
+            {/* </div>
+            </Link> */}
 
 
           {/* Desktop Navigation */}
@@ -52,7 +65,7 @@ const Navigation = () => {
                 key={item.href}
                 to={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-accent",
+                  "text-medium font-medium transition-colors hover:text-accent",
                   isActive(item.href) ? "text-accent" : "text-foreground"
                 )}
               >

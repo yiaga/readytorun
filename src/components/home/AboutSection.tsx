@@ -25,31 +25,31 @@ const AboutSection = () => {
               <p className="text-lg text-muted-foreground leading-relaxed">
                 We want to make a statement that young people can demonstrate excellent public leadership and have the capacity to address Africa's governance challenges.
               </p>
-              <Button size="lg" asChild>
+              <Button variant="secondary" size="lg" asChild>
                 <Link to="/about" className="inline-flex items-center">
                   Read More <ArrowRight className="h-5 w-5 ml-2" />
                 </Link>
               </Button>
             </div>
 
-            <Card className="bg-gradient-to-br from-accent to-accent/90 text-accent-foreground">
+            <Card className="bg-gradient-to-br from-primary to-primary/90 text-accent-foreground">
               <CardContent className="p-8">
                 <div className="grid grid-cols-2 gap-6 text-center">
                   <div>
-                    <div className="text-3xl font-bold mb-2">400+</div>
-                    <div className="text-sm opacity-90">Young Candidates Supported</div>
+                    <div className="text-3xl text-white font-bold mb-2">400+</div>
+                    <div className="text-sm text-white opacity-90">Young Candidates Supported</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold mb-2">2027</div>
-                    <div className="text-sm opacity-90">Target Election Cycle</div>
+                    <div className="text-3xl text-white font-bold mb-2">2027</div>
+                    <div className="text-sm text-white opacity-90">Target Election Cycle</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold mb-2">36</div>
-                    <div className="text-sm opacity-90">States Reached</div>
+                    <div className="text-3xl text-white font-bold mb-2">36</div>
+                    <div className="text-sm text-white opacity-90">States Reached</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold mb-2">100%</div>
-                    <div className="text-sm opacity-90">Committed to Change</div>
+                    <div className="text-3xl text-white font-bold mb-2">100%</div>
+                    <div className="text-sm text-white opacity-90">Committed to Change</div>
                   </div>
                 </div>
               </CardContent>

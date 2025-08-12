@@ -87,7 +87,7 @@ const About = () => {
               </div>
 
               {/* Call to Action */}
-              <Card className="bg-gradient-to-br from-accent to-accent/90 text-accent-foreground">
+              <Card className="bg-gradient-to-br from-primary to-primary/90 text-primary-foreground">
                 <CardContent className="p-8 text-center">
                   <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
                   <p className="text-lg mb-6">
@@ -95,7 +95,7 @@ const About = () => {
                   </p>
                   <a 
                     href="/register" 
-                    className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                    className="inline-block bg-accent text-accent-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
                   >
                     Register Now
                   </a>

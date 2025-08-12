@@ -67,12 +67,14 @@ const Footer = () => {
             </div> */}
             {/* Logos replacing text */}
             <div className="flex justify-center items-center space-x-8 mt-12">
-              <img src="
-
-http://googleusercontent.com/image_collection/image_retrieval/3930628397354807712_0
-" alt="European Union Logo" className="h-12" />
-              <img src="" alt="YIAGA Africa Logo" className="h-12" />
+              <img src="/src/assets/eu-funded-logo.png" alt="European Union Logo" className="h-20 w-auto" />
+              <img src="/src/assets/yiaga-logo.png" alt="YIAGA Africa Logo" className="h-20 w-auto" />
             </div>
+
+            {/* <div className="bg-white p-6 rounded-lg shadow-lg flex justify-center items-center space-x-8 mt-12">
+              <img src="/src/assets/eu-funded-logo.png" alt="European Union Logo" className="h-20 w-auto" />
+              <img src="/src/assets/yiaga-logo.png" alt="YIAGA Africa Logo" className="h-20 w-auto" />
+          </div> */}
 
           {/* </div> */}
           </div>
