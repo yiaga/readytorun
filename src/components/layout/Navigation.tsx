@@ -25,13 +25,7 @@ const Navigation = () => {
     <nav className="bg-background border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          {/* <Link to="/" className="flex items-center">
-            <div className="text-2xl font-bold">
-              <span className="text-primary">Ready</span>
-              <span className="text-accent">ToRun</span>
-            </div>
-          </Link> */}
+          
           {/* Logo */}
            <Link to="/" className="flex items-center space-x-2">
             <div className="w-[140px] h-[80px] bg-white rounded-lg flex items-center justify-center">
@@ -42,20 +36,6 @@ const Navigation = () => {
               />
             </div>
           </Link>
-
-            {/* <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                <img
-                  src="/src/assets/logo.png"
-                  alt="ReadyToRun Logo"
-                  className="w-8 h-8 object-contain"
-                />
-              </div>
-              <div className="text-2xl font-bold">
-              <span className="text-primary">ReadyToRun</span> */}
-              {/* <span className="text-accent">ToRun</span> */}
-            {/* </div>
-            </Link> */}
 
 
           {/* Desktop Navigation */}

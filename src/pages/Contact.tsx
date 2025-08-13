@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Phone, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Facebook, X, Instagram, Linkedin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -57,9 +57,9 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, name: "Facebook", url: "#" },
-    { icon: Twitter, name: "Twitter", url: "#" },
-    { icon: Instagram, name: "Instagram", url: "#" },
+    { icon: Facebook, name: "Facebook", url: "https://www.facebook.com/readytorunNG" },
+    { icon: X, name: "X", url: "https://www.x.com/readytorunNG" },
+    { icon: Instagram, name: "Instagram", url: "https://www.instagram.com/readytorunNG" },
     { icon: Linkedin, name: "LinkedIn", url: "#" }
   ];
 

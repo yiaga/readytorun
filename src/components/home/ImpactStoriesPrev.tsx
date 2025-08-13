@@ -65,7 +65,7 @@ const ImpactStoriesPrev = () => {
               ))}
             </div>
             <Button asChild variant="default" className="mt-6">
-              <Link to="/impact-stories">
+              <Link to="/stories">
                 Read More Stories
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Link>
