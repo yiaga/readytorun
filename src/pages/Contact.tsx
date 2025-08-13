@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "@/config/api";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,6 +11,7 @@ import { Mail, Phone, MapPin, Clock, Facebook, X, Instagram, Linkedin } from "lu
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
+
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -20,13 +22,31 @@ const Contact = () => {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
-    });
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+
+    try {
+      const queryParams = new URLSearchParams(formData).toString();
+      const response = await fetch(`${API_BASE_URL}/contact?${queryParams}`, {
+        method: "GET"
+      });
+
+      if (!response.ok) throw new Error("Network response was not ok");
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting us. We'll get back to you soon.",
+      });
+
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+      console.error(error);
+    }
   };
 
   const contactInfo = [
@@ -137,9 +157,6 @@ const Contact = () => {
                             <SelectContent>
                               <SelectItem value="registration">Registration Support</SelectItem>
                               <SelectItem value="volunteer">Volunteer Opportunities</SelectItem>
-                              <SelectItem value="mentorship">Mentorship Program</SelectItem>
-                              <SelectItem value="partnership">Partnership Inquiry</SelectItem>
-                              <SelectItem value="media">Media Inquiry</SelectItem>
                               <SelectItem value="general">General Question</SelectItem>
                             </SelectContent>
                           </Select>

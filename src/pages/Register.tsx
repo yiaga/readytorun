@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "@/config/api";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -63,13 +64,92 @@ const Register = () => {
     "Friday Evening (5PM - 8PM)"
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   toast({
+  //     title: "Registration Submitted!",
+  //     description: "Thank you for registering. We'll be in touch soon.",
+  //   });
+  // };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Registration Submitted!",
-      description: "Thank you for registering. We'll be in touch soon.",
+    
+    // Add logic to handle file uploads
+    const formPayload = new FormData();
+    // Append all form data fields
+    Object.keys(formData).forEach(key => {
+        if (Array.isArray(formData[key])) {
+            formData[key].forEach(item => formPayload.append(`${key}[]`, item));
+        } else {
+            formPayload.append(key, formData[key]);
+        }
     });
+
+    // Handle file inputs
+    const partyCardInput = document.getElementById("partyCard") as HTMLInputElement;
+    if (partyCardInput?.files?.[0]) {
+        formPayload.append("partyCard", partyCardInput.files[0]);
+    }
+
+    const resumeInput = document.getElementById("resume") as HTMLInputElement;
+    if (resumeInput?.files?.[0]) {
+        formPayload.append("resume", resumeInput.files[0]);
+    }
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/registration`, {
+            method: "POST",
+            body: formPayload,
+            // Note: When using FormData, the 'Content-Type' header is automatically set
+            // to 'multipart/form-data' by the browser, so you don't need to set it manually.
+        });
+
+        if (!response.ok) {
+            // Handle HTTP errors
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log("Success:", result);
+        toast({
+            title: "Registration Submitted!",
+            description: "Thank you for registering. We'll be in touch soon.",
+        });
+        
+        // Optionally, reset the form after successful submission
+        setFormData({
+            fullname: "",
+            dateOfBirth: "",
+            gender: "",
+            email: "",
+            phone: "",
+            stateOfOrigin: "",
+            stateOfResidence: "",
+            education: "",
+            previousOffice: "",
+            interestedOffice: "",
+            previousContest: "",
+            partyMember: "",
+            motivation: "",
+            politicalUnderstanding: "",
+            assistanceNeeded: [],
+            otherSupport: "",
+            availability: [],
+            communication: "",
+            consent: false
+        });
+
+    } catch (error) {
+        console.error("Error:", error);
+        toast({
+            title: "Registration Failed",
+            description: "There was an error submitting your form. Please try again.",
+            variant: "destructive"
+        });
+    }
   };
+
 
   const handleAssistanceChange = (option: string, checked: boolean) => {
     setFormData(prev => ({
