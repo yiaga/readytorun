@@ -12,6 +12,7 @@ const GetInvolved = () => {
       title: "Register to Run",
       description: "Are you under 35 and ready to lead? Register to receive comprehensive support for your political journey.",
       action: "Register Now",
+
       link: "/register",
       variant: "default" as const
     },
@@ -162,9 +163,9 @@ const GetInvolved = () => {
         </section>
 
         {/* Call to Action */}
-        <section className="py-16 bg-gradient-to-br from-accent to-accent/90 text-accent-foreground">
+        <section className="py-16 bg-gradient-to-br from-primary to-primary/90 text-primary-foreground">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
+            <div className="max-w-4xl mx-auto text-center text-white">
               <h2 className="text-3xl lg:text-4xl font-bold mb-6">
                 Ready to Start Your Journey?
               </h2>

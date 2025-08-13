@@ -1,43 +1,54 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin } from "lucide-react";
-import EULogo from "@/assets/eu-funded-logo.png"
-import Logo from "@/assets/logo-blue.png"
-
+import EULogo from "@/assets/eu-funded-logo.png";
+import Logo from "@/assets/logo-blue.png";
 
 const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-12">
+
+        {/* Sponsors Section */}
+        <div className="bg-white rounded-lg shadow-md p-6 mb-12">
+          <div className="text-center">
+            <h4 className="font-medium text-primary mb-6">Sponsored By</h4>
+            <div className="flex justify-center items-center space-x-8">
+              <img
+                src={EULogo}
+                alt="European Union Logo"
+                className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto"
+              />
+              {/* Add more sponsor logos here if needed */}
+            </div>
+          </div>
+        </div>
+
+        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Logo and Description */}
           
+          {/* Logo & Description */}
           <div className="lg:col-span-2">
-             {/* <Link to="/" className="flex items-center space-x-2">
-                <div className="w-[140px] h-[80px] bg-white rounded-lg flex items-center justify-center">
-                  <img
-                    src={Logo}
-                    alt="ReadyToRun Logo"
-                    className="w-[110px] h-[60px] object-contain"
-                  />
-                </div>
-              </Link> */}
-              <Link to="/" className="flex items-center">
-                <img
-                  src={Logo}
-                  alt="ReadyToRun Logo"
-                  className="w-[140px] h-auto object-contain"
-                />
-              </Link>
+            <Link to="/" className="flex items-center mb-6">
+              <img
+                src={Logo}
+                alt="ReadyToRun Logo"
+                className="w-[140px] h-auto object-contain"
+              />
+            </Link>
             <p className="text-primary-foreground/80 mb-6 max-w-md">
-              A movement dedicated to inspiring young men and women to run for elective office in Nigeria. 
+              A movement dedicated to inspiring young men and women to run for elective office in Nigeria.
               Providing the responsive, accountable, innovative, and transformative leadership Nigeria needs.
             </p>
             <div className="flex space-x-4">
               <Button variant="secondary" asChild>
                 <Link to="/register">Register to Run</Link>
               </Button>
-              <Button variant="outline" asChild className="border-secondary text-primary hover:bg-primary-foreground hover:text-primary">
+              <Button
+                variant="outline"
+                asChild
+                className="border-secondary text-primary hover:bg-primary-foreground hover:text-primary"
+              >
                 <Link to="/get-involved">Volunteer</Link>
               </Button>
             </div>
@@ -71,29 +82,6 @@ const Footer = () => {
                 <span>Abuja, Nigeria</span>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Sponsors */}
-        <div className="border-t border-primary-foreground/20 mt-12 pt-8">
-          <div className="text-center">
-            <h4 className="font-medium mb-4">Proudly Sponsored By</h4>
-            {/* <div className="flex justify-center items-center space-x-8">
-              <div className="text-lg font-semibold">European Union</div>
-              <div className="text-lg font-semibold">YIAGA</div>
-            </div> */}
-            {/* Logos replacing text */}
-            <div className="flex justify-center items-center space-x-8 mt-12">
-              <img src={EULogo} alt="European Union Logo" className="h-20 w-auto" />
-              {/* <img src="/src/assets/yiaga-logo.png" alt="YIAGA Africa Logo" className="h-20 w-auto" /> */}
-            </div>
-
-            {/* <div className="bg-white p-6 rounded-lg shadow-lg flex justify-center items-center space-x-8 mt-12">
-              <img src="/src/assets/eu-funded-logo.png" alt="European Union Logo" className="h-20 w-auto" />
-              <img src="/src/assets/yiaga-logo.png" alt="YIAGA Africa Logo" className="h-20 w-auto" />
-          </div> */}
-
-          {/* </div> */}
           </div>
         </div>
 

@@ -46,21 +46,21 @@ const Register = () => {
   ];
 
   const availabilityOptions = [
-    "Monday Morning",
-    "Monday Afternoon", 
-    "Monday Evening",
-    "Tuesday Morning",
-    "Tuesday Afternoon",
-    "Tuesday Evening",
-    "Wednesday Morning",
-    "Wednesday Afternoon",
-    "Wednesday Evening",
-    "Thursday Morning",
-    "Thursday Afternoon",
-    "Thursday Evening",
-    "Friday Morning",
-    "Friday Afternoon",
-    "Friday Evening"
+    "Monday Morning (9AM - 12PM)",
+    "Monday Afternoon (1PM - 4PM)", 
+    "Monday Evening (5PM - 8PM)",
+    "Tuesday Morning (9AM - 12PM)",
+    "Tuesday Afternoon (1PM - 4PM)",
+    "Tuesday Evening (5PM - 8PM)",
+    "Wednesday Morning (9AM - 12PM)",
+    "Wednesday Afternoon (1PM - 4PM)",
+    "Wednesday Evening (5PM - 8PM)",
+    "Thursday Morning (9AM - 12PM)",
+    "Thursday Afternoon (1PM - 4PM)",
+    "Thursday Evening (5PM - 8PM)",
+    "Friday Morning (9AM - 12PM)",
+    "Friday Afternoon (1PM - 4PM)",
+    "Friday Evening (5PM - 8PM)"
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -223,29 +223,43 @@ const Register = () => {
 
                   {/* Political Experience */}
                   <div>
-                    <Label htmlFor="previousOffice" className="text-lg font-medium">Have you previously held any elective or appointed office? (state and year)</Label>
+                    <Label htmlFor="previousOffice" className="text-lg font-medium">Have you previously held any elective or appointed office? (office and year)</Label>
                     <Input 
                       id="previousOffice"
                       className="text-lg"
                       value={formData.previousOffice}
                       onChange={(e) => setFormData(prev => ({...prev, previousOffice: e.target.value}))}
-                      placeholder="e.g., Student Union President (2020)"
+                      placeholder="e.g., Abia State Governor (2020)"
                     />
                   </div>
 
                   <div>
                     <Label htmlFor="interestedOffice" className="text-lg font-medium">Which office are you interested in? *</Label>
-                    <Input 
+                    {/* <Input 
                       id="interestedOffice"
                       className="text-lg"
                       value={formData.interestedOffice}
                       onChange={(e) => setFormData(prev => ({...prev, interestedOffice: e.target.value}))}
                       required 
-                    />
+                    /> */}
+                      <Select value={formData.interestedOffice} onValueChange={(value) => setFormData(prev => ({...prev, interestedOffice: value}))}>
+                        <SelectTrigger className="text-lg">
+                          <SelectValue placeholder="Select Interested Office" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="president">President</SelectItem>
+                          <SelectItem value="governor">Governor</SelectItem>
+                          <SelectItem value="senate">Senate</SelectItem>
+                          <SelectItem value="house-of-rep">House of Representatives</SelectItem>
+                          <SelectItem value="state-house">State House of Assembly</SelectItem>
+                          <SelectItem value="lga-chairman">Local Government Chairman</SelectItem>
+                          <SelectItem value="councillor">Councillor</SelectItem>
+                        </SelectContent>
+                      </Select>
                   </div>
 
                   <div>
-                    <Label htmlFor="previousContest" className="text-lg font-medium">Have you contested for an elective office before? (state and year)</Label>
+                    <Label htmlFor="previousContest" className="text-lg font-medium">Have you contested for an elective office before? (office and year)</Label>
                     <Input 
                       id="previousContest"
                       className="text-lg"
@@ -353,11 +367,10 @@ const Register = () => {
                         <div key={option} className="flex items-center space-x-2">
                           <Checkbox 
                             id={`availability-${option}`}
-                            className="text-lg"
                             checked={formData.availability.includes(option)}
                             onCheckedChange={(checked) => handleAvailabilityChange(option, !!checked)}
                           />
-                          <Label htmlFor={`availability-${option}`} className="text-lg font-medium"> {option}</Label>
+                          <Label htmlFor={`availability-${option}`} className="text-medium font-sm"> {option}</Label>
                         </div>
                       ))}
                     </div>
@@ -379,8 +392,8 @@ const Register = () => {
                         <Label htmlFor="comm-zoom" className="text-lg font-medium">Zoom</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="whatsapp" id="comm-whatsapp" />
-                        <Label htmlFor="comm-whatsapp" className="text-lg font-medium">WhatsApp</Label>
+                        <RadioGroupItem value="google-meet" id="comm-google-meet" />
+                        <Label htmlFor="comm-google-meet" className="text-lg font-medium">Google Meet</Label>
                       </div>
                     </RadioGroup>
                   </div>
