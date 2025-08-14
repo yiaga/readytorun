@@ -27,7 +27,7 @@ const Contact = () => {
 
     try {
       const queryParams = new URLSearchParams(formData).toString();
-      const response = await fetch(`${API_BASE_URL}/contact?${queryParams}`, {
+      const response = await fetch(`${API_BASE_URL}/api/contact?${queryParams}`, {
         method: "GET"
       });
 

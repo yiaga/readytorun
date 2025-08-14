@@ -36,6 +36,11 @@ const Register = () => {
     consent: false
   });
 
+  const [files, setFiles] = useState({
+    partyCard: null as File | null,
+    resume: null as File | null,
+  });
+
   const assistanceOptions = [
     "Campaign Strategy",
     "Fundraising Support",
@@ -64,60 +69,48 @@ const Register = () => {
     "Friday Evening (5PM - 8PM)"
   ];
 
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   toast({
-  //     title: "Registration Submitted!",
-  //     description: "Thank you for registering. We'll be in touch soon.",
-  //   });
-  // };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Add logic to handle file uploads
     const formPayload = new FormData();
     // Append all form data fields
     Object.keys(formData).forEach(key => {
-        if (Array.isArray(formData[key])) {
-            formData[key].forEach(item => formPayload.append(`${key}[]`, item));
+        const value = formData[key as keyof typeof formData];
+        if (Array.isArray(value)) {
+            value.forEach(item => formPayload.append(`${key}[]`, item));
+        } else if (typeof value === 'boolean') {
+            formPayload.append(key, value.toString());
         } else {
-            formPayload.append(key, formData[key]);
+            formPayload.append(key, value);
         }
     });
 
-    // Handle file inputs
-    const partyCardInput = document.getElementById("partyCard") as HTMLInputElement;
-    if (partyCardInput?.files?.[0]) {
-        formPayload.append("partyCard", partyCardInput.files[0]);
+    // Append file inputs
+    if (files.partyCard) {
+        formPayload.append("partyCard", files.partyCard);
     }
-
-    const resumeInput = document.getElementById("resume") as HTMLInputElement;
-    if (resumeInput?.files?.[0]) {
-        formPayload.append("resume", resumeInput.files[0]);
+    if (files.resume) {
+        formPayload.append("resume", files.resume);
     }
 
     try {
-        const response = await fetch(`${API_BASE_URL}/registration`, {
+        const response = await fetch(`${API_BASE_URL}/api/registration`, {
             method: "POST",
             body: formPayload,
-            // Note: When using FormData, the 'Content-Type' header is automatically set
-            // to 'multipart/form-data' by the browser, so you don't need to set it manually.
         });
 
         if (!response.ok) {
-            // Handle HTTP errors
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const result = await response.json();
         console.log("Success:", result);
         toast({
-            title: "Registration Submitted!",
+            title: "Registration Submitted! 🎉",
             description: "Thank you for registering. We'll be in touch soon.",
         });
         
-        // Optionally, reset the form after successful submission
+        // Reset the form and file states after successful submission
         setFormData({
             fullname: "",
             dateOfBirth: "",
@@ -139,17 +132,17 @@ const Register = () => {
             communication: "",
             consent: false
         });
+        setFiles({ partyCard: null, resume: null });
 
     } catch (error) {
         console.error("Error:", error);
         toast({
-            title: "Registration Failed",
+            title: "Registration Failed 😥",
             description: "There was an error submitting your form. Please try again.",
             variant: "destructive"
         });
     }
   };
-
 
   const handleAssistanceChange = (option: string, checked: boolean) => {
     setFormData(prev => ({
@@ -315,13 +308,6 @@ const Register = () => {
 
                   <div>
                     <Label htmlFor="interestedOffice" className="text-lg font-medium">Which office are you interested in? *</Label>
-                    {/* <Input 
-                      id="interestedOffice"
-                      className="text-lg"
-                      value={formData.interestedOffice}
-                      onChange={(e) => setFormData(prev => ({...prev, interestedOffice: e.target.value}))}
-                      required 
-                    /> */}
                       <Select value={formData.interestedOffice} onValueChange={(value) => setFormData(prev => ({...prev, interestedOffice: value}))}>
                         <SelectTrigger className="text-lg">
                           <SelectValue placeholder="Select Interested Office" />
@@ -366,11 +352,24 @@ const Register = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="partyCard" className="text-lg font-medium">Upload your political party membership card</Label>
-                      <Input id="partyCard" className="text-lg" type="file" accept="image/*,.pdf" />
+                      <Input 
+                        id="partyCard" 
+                        className="text-lg" 
+                        type="file" 
+                        accept="image/*,.pdf" 
+                        onChange={(e) => setFiles(prev => ({ ...prev, partyCard: e.target.files ? e.target.files[0] : null }))}
+                      />
                     </div>
                     <div>
                       <Label htmlFor="resume" className="text-lg font-medium">Upload resume/CV *</Label>
-                      <Input id="resume" className="text-lg" type="file" accept=".pdf,.doc,.docx" required />
+                      <Input 
+                        id="resume" 
+                        className="text-lg" 
+                        type="file" 
+                        accept=".pdf,.doc,.docx" 
+                        onChange={(e) => setFiles(prev => ({ ...prev, resume: e.target.files ? e.target.files[0] : null }))}
+                        required 
+                      />
                     </div>
                   </div>
 
