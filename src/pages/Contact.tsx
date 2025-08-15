@@ -26,9 +26,16 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      const queryParams = new URLSearchParams(formData).toString();
-      const response = await fetch(`${API_BASE_URL}/api/contact?${queryParams}`, {
-        method: "GET"
+      const response = await fetch(`${API_BASE_URL}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullname: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message
+        })
       });
 
       if (!response.ok) throw new Error("Network response was not ok");
@@ -155,9 +162,9 @@ const Contact = () => {
                               <SelectValue placeholder="Select subject" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="registration">Registration Support</SelectItem>
+                              <SelectItem value="registration support">Registration Support</SelectItem>
                               <SelectItem value="volunteer">Volunteer Opportunities</SelectItem>
-                              <SelectItem value="general">General Question</SelectItem>
+                              <SelectItem value="general inquiry">General Question</SelectItem>
                             </SelectContent>
                           </Select>
                         </div>

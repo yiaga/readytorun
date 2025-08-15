@@ -9,8 +9,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { Loader2 } from "lucide-react"; 
+
+const nigerianStates = [
+  "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue", "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "FCT", "Gombe", "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara", "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun", "Oyo", "Plateau", "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara"
+];
 
 const Register = () => {
   const { toast } = useToast();
@@ -41,6 +46,9 @@ const Register = () => {
     resume: null as File | null,
   });
 
+  // New state variable to track submission status
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const assistanceOptions = [
     "Campaign Strategy",
     "Fundraising Support",
@@ -69,8 +77,15 @@ const Register = () => {
     "Friday Evening (5PM - 8PM)"
   ];
 
+
+  // 1. Create refs for the file input elements
+  const partyCardRef = useRef<HTMLInputElement>(null);
+  const resumeRef = useRef<HTMLInputElement>(null);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Set submitting to true when the function starts
+    setIsSubmitting(true);
     
     const formPayload = new FormData();
     // Append all form data fields
@@ -133,6 +148,14 @@ const Register = () => {
             consent: false
         });
         setFiles({ partyCard: null, resume: null });
+        
+        if (partyCardRef.current) {
+          partyCardRef.current.value = "";
+        }
+        if (resumeRef.current) {
+          resumeRef.current.value = "";
+        }
+
 
     } catch (error) {
         console.error("Error:", error);
@@ -141,6 +164,9 @@ const Register = () => {
             description: "There was an error submitting your form. Please try again.",
             variant: "destructive"
         });
+    } finally {
+        // Set submitting to false after the try/catch block, regardless of outcome
+        setIsSubmitting(false);
     }
   };
 
@@ -257,23 +283,29 @@ const Register = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="stateOfOrigin" className="text-lg font-medium">State of Origin *</Label>
-                      <Input 
-                        id="stateOfOrigin"
-                        className="text-lg"
-                        value={formData.stateOfOrigin}
-                        onChange={(e) => setFormData(prev => ({...prev, stateOfOrigin: e.target.value}))}
-                        required 
-                      />
+                      <Select value={formData.stateOfOrigin} onValueChange={(value) => setFormData(prev => ({...prev, stateOfOrigin: value}))}>
+                        <SelectTrigger className="text-lg">
+                          <SelectValue placeholder="Select state of origin" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {nigerianStates.map(state => (
+                            <SelectItem key={state} value={state.toLowerCase().replace(" ", "_")}>{state}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                     </div>
                     <div>
                       <Label htmlFor="stateOfResidence" className="text-lg font-medium">State of Residence *</Label>
-                      <Input 
-                        id="stateOfResidence"
-                        className="text-lg"
-                        value={formData.stateOfResidence}
-                        onChange={(e) => setFormData(prev => ({...prev, stateOfResidence: e.target.value}))}
-                        required 
-                      />
+                      <Select value={formData.stateOfResidence} onValueChange={(value) => setFormData(prev => ({...prev, stateOfResidence: value}))}>
+                        <SelectTrigger className="text-lg">
+                          <SelectValue placeholder="Select state of residence" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {nigerianStates.map(state => (
+                            <SelectItem key={state} value={state.toLowerCase().replace(" ", "_")}>{state}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                     </div>
                   </div>
 
@@ -358,6 +390,7 @@ const Register = () => {
                         type="file" 
                         accept="image/*,.pdf" 
                         onChange={(e) => setFiles(prev => ({ ...prev, partyCard: e.target.files ? e.target.files[0] : null }))}
+                        ref={partyCardRef} 
                       />
                     </div>
                     <div>
@@ -369,6 +402,7 @@ const Register = () => {
                         accept=".pdf,.doc,.docx" 
                         onChange={(e) => setFiles(prev => ({ ...prev, resume: e.target.files ? e.target.files[0] : null }))}
                         required 
+                        ref={resumeRef} 
                       />
                     </div>
                   </div>
@@ -490,8 +524,15 @@ const Register = () => {
                     </Label>
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full text-lg font-medium">
-                    Submit Registration
+                  <Button type="submit" size="lg" className="w-full text-lg font-medium" disabled={isSubmitting}>
+                    {isSubmitting ? (
+                        <div className="flex items-center justify-center">
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            <span>Submitting...</span>
+                        </div>
+                    ) : (
+                        "Submit Registration"
+                    )}
                   </Button>
                 </form>
               </CardContent>
