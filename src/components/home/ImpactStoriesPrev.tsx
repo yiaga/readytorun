@@ -1,63 +1,76 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRight, Download } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Download, PlayCircle } from "lucide-react";
-import { Badge } from "../ui/badge";
+import Heading from "../headers/Heading";
+import SectionSpacing from "../Spacing/SectionSpacing";
 
+import image1 from "../../assets/images/persons_1.jpg";
+import image2 from "../../assets/images/persons_2.jpg";
+import image3 from "../../assets/images/persons_3.jpg";
 
-  const impactStories = [
+const impactStories = [
   {
     title: "Breaking Barriers in Abuja",
     description:
-      "Lois Auta, first woman with a disability to run for Nigeria’s House of Representatives, gained national visibility and inspired women with disabilities through Ready To Run support.",
-    impact:
-      "Media coverage, increased representation, challenged gender and disability stereotypes",
-    pdfUrl: "/pdfs/R2R-quotes-banner.pdf"
+      "Lois Auta, first woman with a disability to run for Nigeria’s House of Representatives, gained national visibility and inspired women with disabilities.",
+    impact: "Challenged gender & disability stereotypes",
+    pdfUrl: "/pdfs/R2R-quotes-banner.pdf",
   },
   {
     title: "Amplifying Women’s Voices in Politics",
     description:
-      "Tari Oba Oliver and Grace Ese Obakina leveraged Ready To Run’s training to contest in multiple elections, strengthen grassroots advocacy, and gain political leadership roles.",
-    impact:
-      "Expanded political networks, boosted self-confidence, inspired more women to run",
-    pdfUrl: "/pdfs/beneficiaries-stories-for-R2R.pdf"
-  }
+      "Tari Oba Oliver and Grace Ese Obakina leveraged Ready To Run training to contest elections and gain leadership roles.",
+    impact: "Expanded networks & boosted confidence",
+    pdfUrl: "/pdfs/beneficiaries-stories-for-R2R.pdf",
+  },
 ];
-  
+
 const ImpactStoriesPrev = () => {
   return (
-    <section className="py-16 bg-muted">
+    <section className="py-20 bg-muted">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-primary mb-8 text-center">
+        {/* Section Heading */}
+        <Heading
+          variant="h2"
+          bold={false}
+          className="text-center text-primary "
+        >
           Impact Stories
-        </h2>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          {/* Content */}
+        </Heading>
+        <SectionSpacing />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Left Side: Compact story cards */}
           <div>
-            <h3 className="text-2xl font-bold text-primary mb-6">
+            <Heading variant="h3" bold={false} className=" mb-8">
               Real Change, Real Leaders
-            </h3>
-            <div className="space-y-6">
+            </Heading>
+            <div className="space-y-5">
               {impactStories.map((story, index) => (
-                <Card key={index} className="shadow-accent">
-                  <CardContent className="p-6">
-                    <h4 className="text-lg font-semibold text-primary mb-2">
+                <Card
+                  key={index}
+                  className="rounded-xl border shadow-sm hover:shadow-md transition"
+                >
+                  <CardContent className="p-5">
+                    <h4 className="text-base font-semibold text-primary mb-1">
                       {story.title}
                     </h4>
-                    <p className="text-muted-foreground mb-3">
+                    <p className="text-sm text-muted-foreground mb-2">
                       {story.description}
                     </p>
-                    <Badge variant="secondary" className="text-xs mb-4">
+                    {/* <Badge
+                      variant="secondary"
+                      className="text-xs px-2 py-0.5 mb-3"
+                    >
                       {story.impact}
-                    </Badge>
+                    </Badge> */}
                     <div>
                       <Button
                         variant="outline"
                         size="sm"
                         onClick={() => window.open(story.pdfUrl, "_blank")}
                       >
-                        <Download className="h-4 w-4 mr-2" /> Download PDF
+                        <Download className="h-4 w-4 mr-1" /> PDF
                       </Button>
                     </div>
                   </CardContent>
@@ -66,24 +79,34 @@ const ImpactStoriesPrev = () => {
             </div>
             <Button asChild variant="default" className="mt-6">
               <Link to="/stories">
-                Read More Stories
-                <ArrowRight className="h-4 w-4 ml-2" />
+                More Stories
+                <ArrowRight className="h-4 w-4 ml-1" />
               </Link>
             </Button>
           </div>
 
-          {/* Video Placeholder */}
-          <Card className="shadow-primary">
+          <Card className="rounded-xl border  overflow-hidden">
             <CardContent className="p-0">
-              <div className="relative aspect-video bg-muted flex items-center justify-center">
-                <div className="text-center">
-                  <PlayCircle className="h-16 w-16 text-secondary mx-auto mb-4" />
-                  <p className="text-lg font-medium text-primary">
-                    Success Story Videos
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    Watch young leaders share their journeys
-                  </p>
+              <div className="w-full aspect-video">
+                {/* Image Gallery */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="col-span-2">
+                    <img
+                      src={image1}
+                      alt="Young leaders campaign"
+                      className="w-full h-64 object-cover rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <img
+                    src={image2}
+                    alt="Campaign rally"
+                    className="w-full h-40 object-cover rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
+                  />
+                  <img
+                    src={image3}
+                    alt="Leadership workshop"
+                    className="w-full h-40 object-cover rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
               </div>
             </CardContent>

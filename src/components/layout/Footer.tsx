@@ -1,32 +1,14 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin } from "lucide-react";
-import EULogo from "@/assets/eu-funded-logo.png";
 import Logo from "@/assets/logo-blue.png";
 
 const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-12">
-
-        {/* Sponsors Section */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-12">
-          <div className="text-center">
-            <h4 className="font-medium text-primary mb-6">Sponsored By</h4>
-            <div className="flex justify-center items-center space-x-8">
-              <img
-                src={EULogo}
-                alt="European Union Logo"
-                className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto"
-              />
-              {/* Add more sponsor logos here if needed */}
-            </div>
-          </div>
-        </div>
-
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          
           {/* Logo & Description */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center mb-6">
@@ -37,8 +19,9 @@ const Footer = () => {
               />
             </Link>
             <p className="text-primary-foreground/80 mb-6 max-w-md">
-              A movement dedicated to inspiring young men and women to run for elective office in Nigeria.
-              Providing the responsive, accountable, innovative, and transformative leadership Nigeria needs.
+              A movement dedicated to inspiring young men and women to run for
+              elective office in Nigeria. Providing the responsive, accountable,
+              innovative, and transformative leadership Nigeria needs.
             </p>
             <div className="flex space-x-4">
               <Button variant="secondary" asChild>
@@ -58,10 +41,46 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><Link to="/about" className="text-primary-foreground/80 hover:text-accent transition-colors">About Us</Link></li>
-              <li><Link to="/offices" className="text-primary-foreground/80 hover:text-accent transition-colors">Elective Offices</Link></li>
-              <li><Link to="/stories" className="text-primary-foreground/80 hover:text-accent transition-colors">Impact Stories</Link></li>
-              <li><Link to="/get-involved" className="text-primary-foreground/80 hover:text-accent transition-colors">Get Involved</Link></li>
+              <li>
+                <Link
+                  to="/about"
+                  className="text-primary-foreground/80 hover:text-accent transition-colors"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="text-primary-foreground/80 hover:text-accent transition-colors"
+                >
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/offices"
+                  className="text-primary-foreground/80 hover:text-accent transition-colors"
+                >
+                  Elective Offices
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/stories"
+                  className="text-primary-foreground/80 hover:text-accent transition-colors"
+                >
+                  Impact Stories
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/get-involved"
+                  className="text-primary-foreground/80 hover:text-accent transition-colors"
+                >
+                  Get Involved
+                </Link>
+              </li>
             </ul>
           </div>
 

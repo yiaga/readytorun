@@ -8,6 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    --text: #48484a;
     --background: 0 0% 100%;
     --foreground: 200 86% 22%;
 
@@ -41,9 +42,22 @@ All colors MUST be HSL.
     --gold-foreground: 200 86% 22%;
     --navy: 200 86% 22%;
     --navy-foreground: 0 0% 100%;
-    --hero-gradient: linear-gradient(135deg, hsl(200 86% 22%), hsl(200 76% 32%));
-    --accent-gradient: linear-gradient(135deg, hsl(48 96% 53%), hsl(45 96% 63%));
-    --subtle-gradient: linear-gradient(180deg, hsl(0 0% 100%), hsl(200 10% 98%));
+    --hero-gradient: linear-gradient(
+      135deg,
+      hsl(200 86% 22%),
+      hsl(200 76% 32%)
+    );
+
+    --accent-gradient: linear-gradient(
+      135deg,
+      hsl(48 96% 53%),
+      hsl(45 96% 63%)
+    );
+    --subtle-gradient: linear-gradient(
+      180deg,
+      hsl(0 0% 100%),
+      hsl(200 10% 98%)
+    );
 
     --radius: 0.5rem;
 
@@ -105,6 +119,17 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  body {
+    font-family: "Arima", system-ui;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: var(--text);
+  }
+
+  @theme inline {
+    --color-text: var(--text);
   }
 }
 

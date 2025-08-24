@@ -2,7 +2,14 @@ import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { UserPlus, Heart, Users, Lightbulb, DollarSign, MessageSquare } from "lucide-react";
+import {
+  UserPlus,
+  Heart,
+  Users,
+  Lightbulb,
+  DollarSign,
+  MessageSquare,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const GetInvolved = () => {
@@ -10,28 +17,31 @@ const GetInvolved = () => {
     {
       icon: UserPlus,
       title: "Register to Run",
-      description: "Are you under 35 and ready to lead? Register to receive comprehensive support for your political journey.",
+      description:
+        "Are you under 35 and ready to lead? Register to receive comprehensive support for your political journey.",
       action: "Register Now",
 
       link: "/register",
-      variant: "default" as const
+      variant: "default" as const,
     },
     {
       icon: Heart,
       title: "Volunteer",
-      description: "Support young candidates by volunteering your time during campaigns and community events.",
+      description:
+        "Support young candidates by volunteering your time during campaigns and community events.",
       action: "Become a Volunteer",
       link: "/contact",
-      variant: "secondary" as const
-    },    
+      variant: "secondary" as const,
+    },
     {
       icon: MessageSquare,
       title: "Spread the Word",
-      description: "Help us reach more young Nigerians by sharing our mission on social media and in your networks.",
+      description:
+        "Help us reach more young Nigerians by sharing our mission on social media and in your networks.",
       action: "Share Now",
       link: "/contact",
-      variant: "outline" as const
-    }
+      variant: "outline" as const,
+    },
   ];
 
   const benefits = [
@@ -42,7 +52,7 @@ const GetInvolved = () => {
     "Media training and public speaking coaching",
     "Policy development workshops",
     "Access to funding opportunities",
-    "Legal guidance and compliance support"
+    "Legal guidance and compliance support",
   ];
 
   return (
@@ -57,7 +67,8 @@ const GetInvolved = () => {
                 Get Involved
               </h1>
               <p className="text-xl lg:text-2xl opacity-90">
-                Join the movement transforming Nigerian politics. Every contribution makes a difference.
+                Join the movement transforming Nigerian politics. Every
+                contribution makes a difference.
               </p>
             </div>
           </div>
@@ -68,9 +79,12 @@ const GetInvolved = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4">Ways to Get Involved</h2>
+                <h2 className="text-3xl font-bold mb-4">
+                  Ways to Get Involved
+                </h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                  Whether you want to run for office or support others who do, there's a place for you in the ReadyToRun movement.
+                  Whether you want to run for office or support others who do,
+                  there's a place for you in the ReadyToRun movement.
                 </p>
               </div>
 
@@ -78,7 +92,10 @@ const GetInvolved = () => {
                 {ways.slice(0, 3).map((way, index) => {
                   const Icon = way.icon;
                   return (
-                    <Card key={index} className="hover:shadow-lg transition-shadow text-center">
+                    <Card
+                      key={index}
+                      className="hover:shadow-lg transition-shadow text-center"
+                    >
                       <CardHeader>
                         <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
                           <Icon className="h-8 w-8 text-accent-foreground" />
@@ -86,8 +103,14 @@ const GetInvolved = () => {
                         <CardTitle className="text-xl">{way.title}</CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-muted-foreground mb-6">{way.description}</p>
-                        <Button variant={way.variant} asChild className="w-full">
+                        <p className="text-muted-foreground mb-6">
+                          {way.description}
+                        </p>
+                        <Button
+                          variant={way.variant}
+                          asChild
+                          className="w-full"
+                        >
                           <Link to={way.link}>{way.action}</Link>
                         </Button>
                       </CardContent>
@@ -106,7 +129,8 @@ const GetInvolved = () => {
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">What You Get</h2>
                 <p className="text-lg text-muted-foreground">
-                  When you join ReadyToRun, you become part of a comprehensive support system designed to help you succeed.
+                  When you join ReadyToRun, you become part of a comprehensive
+                  support system designed to help you succeed.
                 </p>
               </div>
 
@@ -129,9 +153,12 @@ const GetInvolved = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4">Join Our Success Stories</h2>
+                <h2 className="text-3xl font-bold mb-4">
+                  Join Our Success Stories
+                </h2>
                 <p className="text-lg text-muted-foreground">
-                  See how ReadyToRun has helped young Nigerians achieve their political aspirations.
+                  See how ReadyToRun has helped young Nigerians achieve their
+                  political aspirations.
                 </p>
               </div>
 
@@ -139,7 +166,9 @@ const GetInvolved = () => {
                 <div className="space-y-4">
                   <div className="text-4xl font-bold text-accent">400+</div>
                   <div className="text-lg">Young Candidates Supported</div>
-                  <p className="text-muted-foreground">Across all levels of government</p>
+                  <p className="text-muted-foreground">
+                    Across all levels of government
+                  </p>
                 </div>
                 <div className="space-y-4">
                   <div className="text-4xl font-bold text-accent">150+</div>
@@ -170,13 +199,19 @@ const GetInvolved = () => {
                 Ready to Start Your Journey?
               </h2>
               <p className="text-xl opacity-90 mb-8">
-                Don't wait for change - be the change. Join ReadyToRun today and start making a difference in Nigerian politics.
+                Don't wait for change - be the change. Join ReadyToRun today and
+                start making a difference in Nigerian politics.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button variant="secondary" size="lg" asChild>
                   <Link to="/register">Register to Run</Link>
                 </Button>
-                <Button variant="outline" size="lg" asChild className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  asChild
+                  className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent"
+                >
                   <Link to="/contact">Contact Us</Link>
                 </Button>
               </div>

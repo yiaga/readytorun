@@ -3,20 +3,19 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Logo from "@/assets/logo.png"
-
+import Logo from "@/assets/logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
   const navItems = [
+    { label: "HOME", href: "/" },
     { label: "ABOUT", href: "/about" },
     { label: "ELECTIVE OFFICES", href: "/offices" },
     { label: "IMPACT STORIES", href: "/stories" },
     { label: "RESOURCES", href: "/resources" },
     { label: "GET INVOLVED", href: "/get-involved" },
-    { label: "CONTACT US", href: "/contact" },
   ];
 
   const isActive = (href: string) => location.pathname === href;
@@ -25,9 +24,8 @@ const Navigation = () => {
     <nav className="bg-background border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
-          
           {/* Logo */}
-           <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <div className="w-[140px] h-[80px] bg-white rounded-lg flex items-center justify-center">
               <img
                 src={Logo}
@@ -37,7 +35,6 @@ const Navigation = () => {
             </div>
           </Link>
 
-
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
@@ -45,7 +42,7 @@ const Navigation = () => {
                 key={item.href}
                 to={item.href}
                 className={cn(
-                  "text-medium font-medium transition-colors hover:text-accent",
+                  "text-medium font-medium text-sm transition-colors hover:text-accent",
                   isActive(item.href) ? "text-accent" : "text-foreground"
                 )}
               >
