@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Phone, MapPin, Clock, Facebook, X, Instagram, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Facebook, X, Instagram } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -87,7 +87,7 @@ const Contact = () => {
     { icon: Facebook, name: "Facebook", url: "https://www.facebook.com/readytorunNG" },
     { icon: X, name: "X", url: "https://www.x.com/readytorunNG" },
     { icon: Instagram, name: "Instagram", url: "https://www.instagram.com/readytorunNG" },
-    { icon: Linkedin, name: "LinkedIn", url: "#" }
+
   ];
 
   return (
@@ -260,7 +260,7 @@ const Contact = () => {
                           <a href="/register">Register to Run</a>
                         </Button>
                         <Button variant="outline" asChild className="border-secondary text-primary hover:bg-primary-foreground hover:text-primary">
-                          <a href="/get-involved">Get Involved</a>
+                          <a href="/volunteer">Volunteer</a>
                         </Button>
                       </div>
                     </CardContent>

@@ -1,24 +1,41 @@
 import { useEffect, useState } from "react";
 import Heading from "../headers/Heading";
+import { Link } from "react-router-dom";
+
 
 export default function Hero() {
-  const calculateTimeLeft = () => {
-    const targetDate = new Date("2025-09-27"); // update with actual date
-    const difference = targetDate - new Date();
-    let timeLeft = {};
 
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / (1000 * 60)) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
-    return timeLeft;
+ type TimeLeft = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
+
+function calculateTimeLeft(): TimeLeft {
+ 
+  const difference = +new Date("2027-05-29") - +new Date();
+
+  let timeLeft: TimeLeft = {
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
   };
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  if (difference > 0) {
+    timeLeft = {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
+  }
+
+  return timeLeft;
+}
+
+const [timeLeft, setTimeLeft] = useState<TimeLeft>(() => calculateTimeLeft());
 
   useEffect(() => {
     const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000);
@@ -35,12 +52,19 @@ export default function Hero() {
         leadership
       </p>
       <div className="mt-6 flex justify-center gap-4">
-        <button className="bg-[#48484a] text-white p-2.5 rounded-tl-lg rounded-br-lg">
-          Register Now
-        </button>
-        <button className="border border-[#48484a] p-2.5 rounded-tl-lg rounded-br-lg">
-          Learn More
-        </button>
+        <Link
+        to="/register"
+        className="bg-[#48484a] text-white p-2.5 rounded-tl-lg rounded-br-lg"
+      >
+        Register Now
+      </Link>
+
+      <Link
+        to="/about"
+        className="border border-[#48484a] p-2.5 rounded-tl-lg rounded-br-lg"
+      >
+        Learn More
+      </Link>
       </div>
 
       {/* Countdown */}

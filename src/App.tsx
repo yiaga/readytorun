@@ -14,6 +14,7 @@ import Resources from "./pages/Resources";
 import NotFound from "./pages/NotFound";
 import ImpactStories from "./pages/ImpactStories";
 import ScrollToTop from "./components/ui/ScrollToTop";
+import Volunteer from "./pages/Volunteer";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/get-involved" element={<GetInvolved />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/volunteer" element={<Volunteer />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

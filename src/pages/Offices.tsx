@@ -1,9 +1,8 @@
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Globe, Building, MapPin } from "lucide-react";
+import { Landmark, Building2, MapPin, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import PageBanner from "@/components/banners/PageBanner";
@@ -18,7 +17,7 @@ const Offices = () => {
   const offices = [
     {
       level: "Federal Level",
-      icon: Globe,
+      icon: Landmark,
       color: "bg-primary",
       offices: [
         {
@@ -71,7 +70,7 @@ const Offices = () => {
     },
     {
       level: "State Level",
-      icon: Building,
+      icon: Building2,
       color: "bg-accent",
       offices: [
         {
@@ -120,8 +119,8 @@ const Offices = () => {
     },
     {
       level: "Local Government Level",
-      icon: MapPin,
-      color: "bg-secondary",
+      icon: Shield,
+      color: "bg-primary",
       offices: [
         {
           title: "Local Government Chairman",
@@ -208,9 +207,40 @@ const Offices = () => {
                       return (
                         <Card
                           key={key}
+                          className="border hover:shadow-lg transition h-[120px] flex flex-col justify-between"
+                        >
+                          <CardContent className="p-4 flex flex-col justify-between">
+                            {/* Position */}
+                            <h3 className="text-lg font-semibold text-gray-800">
+                              {office.title}
+                            </h3>
+
+                            {/* Duration */}
+                            <p className="text-sm text-muted-foreground">{office.term}</p>
+
+                            {/* View More button */}
+                            <Button
+                              variant="link"
+                              className="p-0 mt-2 text-primary font-semibold self-start"
+                              onClick={() => toggleExpand(key)}
+                            >
+                              {expanded[key] ? "View Less" : "View More"}
+                            </Button>
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                  </div>
+
+{/* 
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    {category.offices.map((office, j) => {
+                      const key = `${i}-${j}`;
+                      return (
+                        <Card
+                          key={key}
                           className="overflow-hidden border hover:shadow-2xl transition"
                         >
-                          {/* Image header */}
                           <div className="relative h-40">
                             <img
                               src={office.image}
@@ -277,7 +307,7 @@ const Offices = () => {
                         </Card>
                       );
                     })}
-                  </div>
+                  </div> */}
                 </div>
               );
             })}

@@ -33,15 +33,6 @@ const GetInvolved = () => {
       link: "/contact",
       variant: "secondary" as const,
     },
-    {
-      icon: MessageSquare,
-      title: "Spread the Word",
-      description:
-        "Help us reach more young Nigerians by sharing our mission on social media and in your networks.",
-      action: "Share Now",
-      link: "/contact",
-      variant: "outline" as const,
-    },
   ];
 
   const benefits = [
@@ -64,11 +55,11 @@ const GetInvolved = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-                Get Involved
+                Ways to Get Involved
               </h1>
               <p className="text-xl lg:text-2xl opacity-90">
-                Join the movement transforming Nigerian politics. Every
-                contribution makes a difference.
+                Whether you want to run for office or support others who do,
+                  there's a place for you in the ReadyToRun movement.
               </p>
             </div>
           </div>
@@ -78,18 +69,9 @@ const GetInvolved = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold mb-4">
-                  Ways to Get Involved
-                </h2>
-                <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                  Whether you want to run for office or support others who do,
-                  there's a place for you in the ReadyToRun movement.
-                </p>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {ways.slice(0, 3).map((way, index) => {
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {ways.slice(0, 2).map((way, index) => {
                   const Icon = way.icon;
                   return (
                     <Card
@@ -212,7 +194,7 @@ const GetInvolved = () => {
                   asChild
                   className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent"
                 >
-                  <Link to="/contact">Contact Us</Link>
+                  <Link to="/volunteer">Volunteer</Link>
                 </Button>
               </div>
             </div>

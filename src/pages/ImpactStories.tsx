@@ -5,11 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin } from "lucide-react";
 
-import image1 from "../assets/images/persons_1.jpg";
-import image2 from "../assets/images/persons_2.jpg";
-import image3 from "../assets/images/persons_3.jpg";
-import image4 from "../assets/images/persons_4.jpg";
-import image5 from "../assets/images/persons_5.jpg";
+import image1 from "../assets/images/stories_1.jpg";
+import image2 from "../assets/images/stories_2.jpg"
+// import image2 from "../assets/images/stories_2.jpg";
+import image3 from "../assets/images/stories_3.jpg";
 import PageBanner from "@/components/banners/PageBanner";
 
 const ImpactStories = () => {
@@ -141,7 +140,7 @@ const ImpactStories = () => {
         </section>
 
         {/* Video Stories */}
-        <section className="py-16 bg-muted">
+        {/* <section className="py-16 bg-muted">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-primary mb-12 text-center">
               Video Stories
@@ -169,7 +168,7 @@ const ImpactStories = () => {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* CTA */}
         <section className="py-16">

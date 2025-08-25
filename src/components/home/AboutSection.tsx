@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Heading from "../headers/Heading";
 import BaseSpacing from "../Spacing/BaseSpacing";
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export default function AboutSection() {
   return (
@@ -24,18 +25,44 @@ export default function AboutSection() {
             Africa's governance challenges.
           </p>
           <BaseSpacing />
-          <Link to="/about" className="inline-flex items-center">
+          {/* <Link to="/about" className="inline-flex items-center">
             <Button variant="secondary" size="lg">
               Read More
             </Button>
-          </Link>
+          </Link> */}
+           <div className="flex flex-col sm:flex-row justify-start gap-4">
+              <Button
+                asChild
+                size="lg"
+                className="bg-[#feca07] text-[#094c66] hover:bg-[#ffdf47] font-semibold px-8"
+              >
+                <Link to="/register">
+                  Read More
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-[#feca07] text-[#094c66] hover:bg-[#feca07] hover:text-[#094c66]"
+              >
+                <a
+                  href="https://www.youtube.com/watch?v=QwWvoT-3Cho&list=PLl6IvhbhEqwxQTSE2amaV5PEgo7C8NE3n"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Watch ReadyToRun TV Show Playlist{" "}
+                  <ArrowRight className="h-5 w-5 ml-2 inline" />
+                </a>
+              </Button>
+            </div>
         </div>
 
         {/* Video embed */}
         <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-lg">
           <iframe
             className="w-full h-full"
-            src="https://www.youtube.com/embed/OYJVSlsZr9I"
+            src="https://www.youtube.com/embed/RXzHIyoIaDQ"
             title="About Video"
             // frameBorder="0"
             // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

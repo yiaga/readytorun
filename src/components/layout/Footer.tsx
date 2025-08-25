@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin } from "lucide-react";
 import Logo from "@/assets/logo-blue.png";
+import Sponsors from "./Sponsors";
 
 const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
+      <Sponsors />
       <div className="container mx-auto px-4 py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -32,7 +34,7 @@ const Footer = () => {
                 asChild
                 className="border-secondary text-primary hover:bg-primary-foreground hover:text-primary"
               >
-                <Link to="/get-involved">Volunteer</Link>
+                <Link to="/volunteer">Volunteer</Link>
               </Button>
             </div>
           </div>

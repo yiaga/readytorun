@@ -393,7 +393,7 @@ const Register = () => {
                         ref={partyCardRef} 
                       />
                     </div>
-                    <div>
+                    {/* <div>
                       <Label htmlFor="resume" className="text-lg font-medium">Upload resume/CV *</Label>
                       <Input 
                         id="resume" 
@@ -404,7 +404,7 @@ const Register = () => {
                         required 
                         ref={resumeRef} 
                       />
-                    </div>
+                    </div> */}
                   </div>
 
                   <div>
@@ -473,7 +473,7 @@ const Register = () => {
                   </div>
 
                   {/* Availability */}
-                  <div>
+                  {/* <div>
                     <Label className="text-lg font-medium">Availability for interviews/meetings during the week</Label>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
                       {availabilityOptions.map((option) => (
@@ -487,7 +487,7 @@ const Register = () => {
                         </div>
                       ))}
                     </div>
-                  </div>
+                  </div> */}
 
                   <div>
                     <Label className="text-lg font-medium">Preferred means of communication *</Label>
